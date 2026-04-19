@@ -1,0 +1,31 @@
+ 
+.postCard {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+ 
+.authorName {
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+ 
+.postContent {
+    color: #34495e;
+    font-style: italic;
+}
+
+
+.editInput {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* מבטיח שה-padding לא יחרוג מהרוחב */
+}
