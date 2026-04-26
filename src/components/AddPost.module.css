@@ -1,0 +1,45 @@
+/* AddPost.module.css */
+
+.modal {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 20rem; /* גודל קבוע לטופס */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  /* כדי שיצוף מעל ה-Backdrop */
+  position: fixed;
+  top: 20vh;
+  left: 30%;
+  z-index: 100;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+}
+
+.formGroup {
+  margin-bottom: 0.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
