@@ -1,0 +1,18 @@
+.wrapper {
+  padding: 96px 24px;
+  text-align: center;
+}
+
+.title {
+  margin: 0 auto;
+  max-width: 920px;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  color: var(--text-h);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 64px 16px;
+  }
+}

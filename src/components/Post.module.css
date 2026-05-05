@@ -1,75 +1,61 @@
- 
-.postCard {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+.wrapper {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 18px;
 }
 
- 
-.authorName {
-    color: #2c3e50;
-    font-weight: bold;
-    font-size: 1.2rem;
+.name {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text-h);
 }
 
- 
-.postContent {
-    color: #34495e;
-    font-style: italic;
+.content {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  color: var(--text);
 }
 
-
-.editInput {
-    margin-top: 10px;
-    padding: 8px;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* מבטיח שה-padding לא יחרוג מהרוחב */
+.field {
+  display: grid;
+  gap: 8px;
 }
-/* עיצוב כללי לכל הכפתורים */
+
+.label {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .button {
-    padding: 8px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s; /* אפקט מעבר חלק בשינוי צבע */
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-/* כפתור עריכה - כחול */
-.buttonEdit {
-    background-color: #3498db;
-    color: white;
-}
-.buttonEdit:hover {
-    background-color: #2980b9;
-}
-
-/* כפתור שמירה - ירוק */
-.buttonSave {
-    background-color: #2ecc71;
-    color: white;
-}
-.buttonSave:hover {
-    background-color: #27ae60;
-}
-
-/* כפתור ביטול - אדום */
-.buttonCancel {
-    background-color: #e74c3c;
-    color: white;
-}
-.buttonCancel:hover {
-    background-color: #c0392b;
-}
-
-/* סידור הכפתורים בשורה */
-.buttonGroup {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
+.button:hover {
+  background: rgba(170, 59, 255, 0.9);
+  transform: translateY(-1px);
 }

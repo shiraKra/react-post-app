@@ -1,64 +1,75 @@
-import React, { useState } from 'react';
-import styles from './Post.module.css';
+import styles from "./Post.module.css"
+import { useState }  from "react";
+import { useOutletContext } from "react-router";
+import { NavLink } from "react-router";
+import { useParams } from "react-router";
+import{useNavigate, Outlet} from "react-router";
 
-function Post({ author, content = "" , onEdit, onDelete}) {
- 
-    const [editAbleContent, setEditAbleContent]=useState(content);
-    const[isEditing, setIsEditing ]= useState(false);
+function Post() {
+  const navigate = useNavigate();
+  const { postid } = useParams();
+  const { posts, handleEditContent, deletePost } = useOutletContext();
+  const currentPost = posts?.[postid] ?? { title: "", body: "" };
+  const { title, body } = currentPost;
+  const [editContent, setEditContent] = useState(body);
 
-    const handleInputChange = (event) => {
-        setEditAbleContent(event.target.value);
-    };
-    const handleEditClick=(event)=>{
-        setIsEditing(true);
-    }
-  
-    const handleCencleClick=(event)=>{
-        setIsEditing(false);
-        setEditAbleContent(content);
-    }
-    const handleSaveClick=(event)=>{
-        onEdit(editAbleContent);
-        setIsEditing(false);
-    }
-    return (
-        <div className={styles.postCard}>
-            <p className={styles.authorName}>{author}</p>
-            <p className={styles.postContent}>{content}</p>
+  const handleInputChange = (event) => {
+    setEditContent(event.target.value);
+  };
 
-          {!isEditing ? ( 
-            <div className={styles.buttenGrup}>
-                <button className={styles.button + " " + styles.buttonEdit} onClick={handleEditClick}>
-                    Edit
-                </button>
-             
-                <button className={styles.button + " " + styles.buttonDelete} onClick={onDelete}>
-                    Delete
-                </button>
-            </div>
-          ) : null}
+  const handleSaveChange = () => {
+    handleEditContent(postid, editContent);
+    navigate("/posts");
+  };
 
-           {isEditing ? (
-            <div className={styles.editSection}>
-                <input 
-                    type="text" 
-                    value={editAbleContent} 
-                    onChange={handleInputChange}  
-                    placeholder="ערוך את תוכן הפוסט"
-                    className={styles.editInput} 
-                />
-                <div className={styles.buttenGrup}>
-                    <button className={styles.button + " " + styles.buttonSave} onClick={handleSaveClick}>
-                        Save
-                    </button>
-                    <button className={styles.button + " " + styles.buttonCancel} onClick={handleCencleClick}>
-                        Cencel  
-                    </button>
-                </div>
-            </div> 
-           ) : null}
-        </div>
-    );
+  const handleCancelEdit = () => {
+    navigate("/posts");
+  };
+
+  const handleDeletePost = () => {
+    deletePost(title);
+    navigate("/posts");
+  };
+
+  const handleBackToPosts = () => {
+    navigate("/posts");
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <p className={styles.name}>{title}</p>
+      <p className={styles.content}>{body}</p>
+
+      <div className={styles.actions}>
+        <button className={styles.button} onClick={handleDeletePost}>
+          Delete
+        </button>
+        <button className={styles.button} onClick={handleBackToPosts}>
+          Back To Posts
+        </button>
+      </div>
+
+      <label className={styles.field}>
+        <span className={styles.label}>Edit content</span>
+        <input
+          className={styles.input}
+          type="text"
+          value={editContent}
+          onChange={handleInputChange}
+          placeholder="Edit post content"
+        />
+      </label>
+
+      <div className={styles.actions}>
+        <button className={styles.button} onClick={handleSaveChange}>
+          Save
+        </button>
+        <button className={styles.button} onClick={handleCancelEdit}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default Post;
